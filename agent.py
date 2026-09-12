@@ -1,5 +1,9 @@
 from strands import Agent, tool
-from tools import analyze_skill_gap, generate_career_plan
+from tools import (
+    analyze_skill_gap,
+    generate_career_plan,
+    evaluate_interview_answer
+)
 
 
 @tool
@@ -27,10 +31,27 @@ def career_plan_generator(
     )
 
 
+@tool
+def interview_evaluator(
+    question: str,
+    answer: str,
+    target_role: str = "software developer"
+) -> dict:
+    """
+    Evaluate a student's interview answer.
+    """
+    return evaluate_interview_answer(
+        question,
+        answer,
+        target_role
+    )
+
+
 careerpilot = Agent(
     tools=[
         skill_gap_analyzer,
-        career_plan_generator
+        career_plan_generator,
+        interview_evaluator
     ],
     system_prompt="""
 You are CareerPilot AI, an autonomous career assistant
