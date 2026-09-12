@@ -1,5 +1,5 @@
 from strands import Agent, tool
-from tools import analyze_skill_gap
+from tools import analyze_skill_gap, generate_career_plan
 
 
 @tool
