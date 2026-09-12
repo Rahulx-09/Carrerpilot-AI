@@ -56,3 +56,41 @@ def analyze_skill_gap(skills, target_role):
             else "You have covered the main skills for this role."
         )
     }
+
+
+def generate_career_plan(target_role, missing_skills, days=30):
+    """
+    Create a simple action plan based on the student's
+    missing skills.
+    """
+
+    if not missing_skills:
+        return {
+            "target_role": target_role,
+            "duration_days": days,
+            "plan": [
+                "Build one portfolio project",
+                "Practice coding problems",
+                "Prepare for technical interviews",
+                "Apply for internships"
+            ]
+        }
+
+    plan = []
+
+    for skill in missing_skills:
+        plan.append(
+            f"Learn {skill} and complete a small practical project."
+        )
+
+    plan.extend([
+        "Practice interview questions",
+        "Build or improve a GitHub portfolio project",
+        "Apply for relevant internships"
+    ])
+
+    return {
+        "target_role": target_role,
+        "duration_days": days,
+        "plan": plan
+    }
