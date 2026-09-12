@@ -94,3 +94,35 @@ def generate_career_plan(target_role, missing_skills, days=30):
         "duration_days": days,
         "plan": plan
     }
+
+
+def evaluate_interview_answer(
+    question,
+    answer,
+    target_role="software developer"
+):
+    """
+    Evaluate an interview answer and provide
+    actionable feedback.
+    """
+
+    answer_length = len(answer.split())
+
+    if answer_length < 20:
+        quality = "Needs improvement"
+        feedback = "Give a more detailed answer with an example."
+    elif answer_length < 50:
+        quality = "Good"
+        feedback = "Good start. Add a specific example or result."
+    else:
+        quality = "Strong"
+        feedback = "Good detail. Keep the answer structured and concise."
+
+    return {
+        "target_role": target_role,
+        "question": question,
+        "answer": answer,
+        "quality": quality,
+        "feedback": feedback,
+        "next_action": "Practice another interview question."
+    }
